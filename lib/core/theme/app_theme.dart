@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:second_serve/core/theme/app_colors.dart';
 
@@ -5,6 +6,7 @@ class AppTheme {
   AppTheme._();
 
   static ThemeData get light => _build(AppColors.light, Brightness.light);
+
   static ThemeData get dark => _build(AppColors.dark, Brightness.dark);
 
   static ThemeData _build(AppColors c, Brightness brightness) {
@@ -26,12 +28,14 @@ class AppTheme {
       colorScheme: scheme,
       scaffoldBackgroundColor: c.background,
       extensions: [c],
+
       appBarTheme: AppBarTheme(
         backgroundColor: c.surface,
         foregroundColor: c.primary,
         elevation: 0,
         centerTitle: true,
       ),
+
       cardTheme: CardThemeData(
         color: c.surface,
         elevation: 0,
@@ -39,6 +43,7 @@ class AppTheme {
           borderRadius: BorderRadius.circular(16),
         ),
       ),
+
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: c.inputFill,
@@ -52,6 +57,7 @@ class AppTheme {
           borderSide: BorderSide.none,
         ),
       ),
+
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: c.primary,
@@ -63,7 +69,11 @@ class AppTheme {
           ),
         ),
       ),
-      dividerTheme: DividerThemeData(color: c.border, thickness: 1),
+
+      dividerTheme: DividerThemeData(
+        color: c.border,
+        thickness: 1,
+      ),
     );
   }
 }

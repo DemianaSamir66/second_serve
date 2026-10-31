@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 @immutable
@@ -42,9 +43,10 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color blue;
   final Color link;
 
-  // لون ثابت في الـ Light والـ Dark
+  // لون ثابت في الوضعين الفاتح والداكن
   static const Color facebookBlue = Color(0xFF1877F2);
 
+  // Light Theme
   static const AppColors light = AppColors(
     background: Color(0xFFF8EFE8),
     surfaceAlt: Color(0xFFFBFAF2),
@@ -66,6 +68,7 @@ class AppColors extends ThemeExtension<AppColors> {
     link: Color(0xFF2A86FF),
   );
 
+  // Dark Theme
   static const AppColors dark = AppColors(
     background: Color(0xFF121512),
     surfaceAlt: Color(0xFF1A1F1A),
@@ -87,9 +90,10 @@ class AppColors extends ThemeExtension<AppColors> {
     link: Color(0xFF5AA0FF),
   );
 
-  /// الاستخدام: AppColors.of(context).primary
-  static AppColors of(BuildContext context) =>
-      Theme.of(context).extension<AppColors>()!;
+  // الوصول للألوان من أي شاشة
+  static AppColors of(BuildContext context) {
+    return Theme.of(context).extension<AppColors>()!;
+  }
 
   @override
   AppColors copyWith({
@@ -137,6 +141,7 @@ class AppColors extends ThemeExtension<AppColors> {
   @override
   AppColors lerp(ThemeExtension<AppColors>? other, double t) {
     if (other is! AppColors) return this;
+
     return AppColors(
       background: Color.lerp(background, other.background, t)!,
       surfaceAlt: Color.lerp(surfaceAlt, other.surfaceAlt, t)!,
