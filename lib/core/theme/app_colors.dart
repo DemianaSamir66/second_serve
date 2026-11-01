@@ -22,6 +22,10 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.border,
     required this.blue,
     required this.link,
+    required this.navBackground,
+    required this.navBorder,
+    required this.navSelected,
+    required this.navUnselected,
   });
 
   final Color background;
@@ -42,17 +46,20 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color border;
   final Color blue;
   final Color link;
+  final Color navBackground;
+  final Color navBorder;
+  final Color navSelected;
+  final Color navUnselected;
 
-  // لون ثابت في الوضعين الفاتح والداكن
+  // لون ثابت في الـ Light والـ Dark
   static const Color facebookBlue = Color(0xFF1877F2);
 
-  // Light Theme
   static const AppColors light = AppColors(
     background: Color(0xFFF8EFE8),
     surfaceAlt: Color(0xFFFBFAF2),
-    inputFill: Color(0xFFF0EBDE),
+    inputFill: Color(0xFFECEBE6),
     surface: Color(0xFFFFFFFF),
-    primary: Color(0xFF2D5A27),
+    primary: Color(0xFF24592C),
     primaryLight: Color(0xFF9DD090),
     primaryDark: Color(0xFF154242),
     primaryTint: Color(0xFFF1F8E9),
@@ -66,9 +73,12 @@ class AppColors extends ThemeExtension<AppColors> {
     border: Color(0xFFE3E3E3),
     blue: Color(0xFF2566AF),
     link: Color(0xFF2A86FF),
+    navBackground: Color(0xFFFFF8F4),
+    navBorder: Color(0xFFEAE1DA),
+    navSelected: Color(0xFF7EB377),
+    navUnselected: Color(0xFF42493E),
   );
 
-  // Dark Theme
   static const AppColors dark = AppColors(
     background: Color(0xFF121512),
     surfaceAlt: Color(0xFF1A1F1A),
@@ -88,12 +98,15 @@ class AppColors extends ThemeExtension<AppColors> {
     border: Color(0xFF3A403A),
     blue: Color(0xFF4F8FD6),
     link: Color(0xFF5AA0FF),
+    navBackground: Color(0xFF171B17),
+    navBorder: Color(0xFF2E342E),
+    navSelected: Color(0xFF7EB377),
+    navUnselected: Color(0xFFB5BAB0),
   );
 
-  // الوصول للألوان من أي شاشة
-  static AppColors of(BuildContext context) {
-    return Theme.of(context).extension<AppColors>()!;
-  }
+  /// الاستخدام: AppColors.of(context).primary
+  static AppColors of(BuildContext context) =>
+      Theme.of(context).extension<AppColors>()!;
 
   @override
   AppColors copyWith({
@@ -115,6 +128,10 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? border,
     Color? blue,
     Color? link,
+    Color? navBackground,
+    Color? navBorder,
+    Color? navSelected,
+    Color? navUnselected,
   }) {
     return AppColors(
       background: background ?? this.background,
@@ -135,13 +152,16 @@ class AppColors extends ThemeExtension<AppColors> {
       border: border ?? this.border,
       blue: blue ?? this.blue,
       link: link ?? this.link,
+      navBackground: navBackground ?? this.navBackground,
+      navBorder: navBorder ?? this.navBorder,
+      navSelected: navSelected ?? this.navSelected,
+      navUnselected: navUnselected ?? this.navUnselected,
     );
   }
 
   @override
   AppColors lerp(ThemeExtension<AppColors>? other, double t) {
     if (other is! AppColors) return this;
-
     return AppColors(
       background: Color.lerp(background, other.background, t)!,
       surfaceAlt: Color.lerp(surfaceAlt, other.surfaceAlt, t)!,
@@ -161,6 +181,10 @@ class AppColors extends ThemeExtension<AppColors> {
       border: Color.lerp(border, other.border, t)!,
       blue: Color.lerp(blue, other.blue, t)!,
       link: Color.lerp(link, other.link, t)!,
+      navBackground: Color.lerp(navBackground, other.navBackground, t)!,
+      navBorder: Color.lerp(navBorder, other.navBorder, t)!,
+      navSelected: Color.lerp(navSelected, other.navSelected, t)!,
+      navUnselected: Color.lerp(navUnselected, other.navUnselected, t)!,
     );
   }
 }
