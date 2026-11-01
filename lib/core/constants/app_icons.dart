@@ -73,7 +73,7 @@ class AppSvgs {
 
   static const logo = 'assets/icons/logo.svg';
   static const google = 'assets/icons/google.svg';
-  static const facebook = 'assets/icons/facebook.svg';
+  static const facebook = 'assets/icons/facebook-login.svg';
 
   // أيقونات المكونات
   static const salt = 'assets/icons/ingredients/salt.svg';
