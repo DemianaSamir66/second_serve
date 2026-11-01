@@ -25,6 +25,7 @@ class AppIcons {
   static const location = Icons.location_on_outlined;
   static const itemsLeft = Icons.inventory_2_outlined;
   static const bookmark = Icons.bookmark_border;
+  static const bookmarkFilled = Icons.bookmark;
   static const star = Icons.star;
   static const addPhoto = Icons.add_a_photo_outlined;
 
