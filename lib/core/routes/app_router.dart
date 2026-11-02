@@ -1,5 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:second_serve/features/auth/presentation/screens/splash_screen.dart';
+import 'package:second_serve/features/auth/presentation/screens/onboarding/onboarding_screen.dart';
+import 'package:second_serve/features/auth/presentation/screens/welcome_screen.dart';
+
 
 class AppRouter {
   AppRouter._();
@@ -48,7 +52,15 @@ class AppRouter {
   // ---------- Routes ----------
   // كل شاشة هنضيفها هنا بعد ما نجهزها
   static final Map<String, WidgetBuilder> routes = {
+    splash: (context) => SplashScreen(
+      onFinished: () =>
+          Navigator.of(context).pushReplacementNamed(onboarding),
+    ),
+    onboarding: (context) => const OnboardingScreen(),
     // Example:
-    // splash: (context) => const SplashScreen(),
+    // welcome: (context) => const WelcomeScreen(),
+    welcome: (context) => WelcomeScreen(
+      onEmail: () => Navigator.of(context).pushNamed(login),
+    ),
   };
 }
