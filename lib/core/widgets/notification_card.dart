@@ -1,4 +1,4 @@
-// This file is reserved for future implementation.
+
 import 'package:flutter/material.dart';
 import 'package:second_serve/core/theme/app_colors.dart';
 import 'package:second_serve/core/theme/text_styles.dart';
@@ -73,7 +73,7 @@ class NotificationCard extends StatelessWidget {
                           Container(
                             width: 6,
                             height: 6,
-                            margin: const EdgeInsets.only(right: 4, top: 1),
+                            margin: const EdgeInsetsDirectional.only(end: 4, top: 1),
                             decoration: BoxDecoration(
                               color: colors.error,
                               shape: BoxShape.circle,

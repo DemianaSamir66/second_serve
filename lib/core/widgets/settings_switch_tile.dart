@@ -1,10 +1,10 @@
-// This file is reserved for future implementation.
+
 import 'package:flutter/material.dart';
 import 'package:second_serve/core/theme/app_colors.dart';
 import 'package:second_serve/core/theme/text_styles.dart';
 
 class SettingsSwitchTile extends StatelessWidget {
-  final IconData icon;
+  final IconData? icon;
   final String title;
   final String? subtitle;
   final bool value;
@@ -12,10 +12,10 @@ class SettingsSwitchTile extends StatelessWidget {
 
   const SettingsSwitchTile({
     super.key,
-    required this.icon,
     required this.title,
     required this.value,
     required this.onChanged,
+    this.icon,
     this.subtitle,
   });
 
@@ -33,16 +33,18 @@ class SettingsSwitchTile extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
           child: Row(
             children: [
-              Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: colors.surface,
-                  borderRadius: BorderRadius.circular(10),
+              if (icon != null) ...[
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: colors.surface,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Icon(icon, size: 20, color: colors.primary),
                 ),
-                child: Icon(icon, size: 20, color: colors.primary),
-              ),
-              const SizedBox(width: 12),
+                const SizedBox(width: 12),
+              ],
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

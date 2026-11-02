@@ -1,4 +1,4 @@
-// This file is reserved for future implementation.
+
 import 'package:flutter/material.dart';
 import 'package:second_serve/core/theme/app_colors.dart';
 import 'package:second_serve/core/theme/text_styles.dart';
@@ -154,8 +154,8 @@ class ProfileHeader extends StatelessWidget {
               child: ClipOval(child: _image(colors)),
             ),
             if (onChangePhoto != null)
-              Positioned(
-                right: 2,
+              PositionedDirectional(
+                end: 2,
                 bottom: 2,
                 child: Container(
                   width: 28,

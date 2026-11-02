@@ -1,4 +1,4 @@
-// This file is reserved for future implementation.
+
 
 import 'package:flutter/material.dart';
 import 'package:second_serve/core/theme/app_colors.dart';
