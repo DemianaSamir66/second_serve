@@ -7,7 +7,6 @@ import 'package:second_serve/core/constants/app_assets.dart';
 import 'package:second_serve/core/theme/app_colors.dart';
 import 'package:second_serve/core/theme/app_theme.dart';
 
-// Temporary main for testing this screen independently
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
