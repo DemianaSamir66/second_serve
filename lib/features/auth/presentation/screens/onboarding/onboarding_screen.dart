@@ -5,7 +5,7 @@ import 'package:second_serve/core/theme/app_theme.dart';
 import 'onboarding1.dart';
 import 'onboarding2.dart';
 import 'onboarding3.dart';
-
+import '../welcome_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
@@ -30,15 +30,12 @@ class OnboardingTestApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.light,
-
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
-
       home: const OnboardingScreen(),
     );
   }
@@ -53,7 +50,6 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
-
   int _currentPage = 0;
 
   void _nextPage() {
@@ -62,6 +58,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         duration: const Duration(milliseconds: 400),
         curve: Curves.easeInOut,
       );
+    } else {
+      _finishOnboarding(); // لو في الصفحة الأخيرة وداس Next هينقلنا للـ Welcome
     }
   }
 
@@ -75,10 +73,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   void _skipOnboarding() {
-    _pageController.animateToPage(
-      2,
-      duration: const Duration(milliseconds: 400),
-      curve: Curves.easeInOut,
+    // لو داس Skip ممكن نخليه ينقل للـ Welcome فوراً أو يروح لآخر صفحة
+    _finishOnboarding();
+  }
+
+  void _finishOnboarding() {
+    // الانتقال لصفحة الـ WelcomeScreen وحذف شاشات الـ Onboarding من الذاكرة
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const WelcomeScreen(
+          // هنا ممكن تربط الزراير بتاعت الـ Welcome لو حابب
+        ),
+      ),
     );
   }
 
@@ -110,6 +117,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           Onboarding3(
             onSkip: _skipOnboarding,
+            onNext: _finishOnboarding, // ربط زر التالي في الشاشة الأخيرة لينقلنا للـ Welcome
             onPrevious: _previousPage,
           ),
         ],
