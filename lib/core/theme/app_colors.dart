@@ -53,6 +53,7 @@ class AppColors extends ThemeExtension<AppColors> {
 
   // ألوان ثابتة في الـ Light والـ Dark
   static const Color facebookBlue = Color(0xFF1877F2);
+  static const Color buttonSecondary = Color(0xFFEAE1DA);
   static const Color googleButtonText = Color(0xFF2D5A27);
   static const Color googleButtonBorder = Color(0xFFE1D8D2);
   static const Color settingsIcon = Color(0xFF154212);
