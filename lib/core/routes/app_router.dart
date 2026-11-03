@@ -1,14 +1,12 @@
-
 import 'package:flutter/material.dart';
+
 import 'package:second_serve/features/auth/presentation/screens/splash_screen.dart';
 import 'package:second_serve/features/auth/presentation/screens/onboarding/onboarding_screen.dart';
 import 'package:second_serve/features/auth/presentation/screens/welcome_screen.dart';
 
-
 class AppRouter {
   AppRouter._();
 
-  // ---------- Auth ----------
   static const splash = '/';
   static const welcome = '/welcome';
   static const onboarding = '/onboarding';
@@ -16,7 +14,6 @@ class AppRouter {
   static const signup = '/signup';
   static const forgetPassword = '/forget-password';
 
-  // ---------- User ----------
   static const userMain = '/user';
   static const aiSearchFilter = '/user/ai-search-filter';
   static const foodDetails = '/user/food-details';
@@ -29,7 +26,6 @@ class AppRouter {
   static const aboutUs = '/user/about-us';
   static const contactUs = '/user/contact-us';
 
-  // ---------- Shared ----------
   static const profile = '/profile';
   static const editProfile = '/profile/edit';
   static const settings = '/settings';
@@ -40,7 +36,6 @@ class AppRouter {
   static const reportProblem = '/report-problem';
   static const termsPolicies = '/terms-policies';
 
-  // ---------- Charity ----------
   static const charityMain = '/charity';
   static const donateFood = '/charity/donate-food';
   static const activeDonations = '/charity/active-donations';
@@ -49,18 +44,19 @@ class AppRouter {
   static const charityImpact = '/charity/impact';
   static const charityNotifications = '/charity/notifications';
 
-  // ---------- Routes ----------
-  // كل شاشة هنضيفها هنا بعد ما نجهزها
   static final Map<String, WidgetBuilder> routes = {
     splash: (context) => SplashScreen(
-      onFinished: () =>
-          Navigator.of(context).pushReplacementNamed(onboarding),
+      onFinished: () {
+        Navigator.of(context).pushReplacementNamed(onboarding);
+      },
     ),
+
     onboarding: (context) => const OnboardingScreen(),
-    // Example:
-    // welcome: (context) => const WelcomeScreen(),
+
     welcome: (context) => WelcomeScreen(
-      onEmail: () => Navigator.of(context).pushNamed(login),
+      onEmail: () {
+        Navigator.of(context).pushNamed(login);
+      },
     ),
   };
 }

@@ -1,9 +1,12 @@
-// This file is reserved for future implementation.
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:second_serve/core/constants/app_assets.dart';
 import 'package:second_serve/core/theme/app_colors.dart';
 import 'package:second_serve/core/theme/text_styles.dart';
+import 'package:second_serve/core/theme/theme_controller.dart';
 
 class WelcomeScreen extends StatelessWidget {
   final VoidCallback? onGoogle;
@@ -34,22 +37,34 @@ class WelcomeScreen extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(24, 8, 24, 32),
           child: Column(
             children: [
-              // أيقونات الثيم واللغة
               Align(
                 alignment: AlignmentDirectional.centerEnd,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(
-                      onPressed: onThemeTap,
+                      onPressed: onThemeTap ??
+                              () {
+                            ThemeController.instance.toggleTheme(!isDark);
+                          },
                       icon: Icon(
-                        isDark ? Icons.dark_mode_outlined : Icons.wb_sunny_outlined,
+                        isDark
+                            ? Icons.dark_mode_outlined
+                            : Icons.wb_sunny_outlined,
                         size: 20,
                         color: colors.textPrimary,
                       ),
                     ),
                     IconButton(
-                      onPressed: onLanguageTap,
+                      onPressed: onLanguageTap ??
+                              () {
+                            final nextLocale =
+                            context.locale.languageCode == 'en'
+                                ? const Locale('ar')
+                                : const Locale('en');
+
+                            context.setLocale(nextLocale);
+                          },
                       icon: Icon(
                         Icons.language,
                         size: 20,
@@ -63,7 +78,7 @@ class WelcomeScreen extends StatelessWidget {
               const SizedBox(height: 24),
 
               Text(
-                "Let's get started\nsaving food!",
+                'welcome_title'.tr(),
                 textAlign: TextAlign.center,
                 style: AppTextStyles.headline(context).copyWith(
                   fontSize: 26,
@@ -72,7 +87,6 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
 
-              // اللوجو في النص
               Expanded(
                 child: Center(
                   child: Image.asset(
@@ -90,9 +104,24 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
 
-              // الأزرار
+              // Facebook
               _AuthButton(
-                label: 'Continue with Google',
+                label: 'continue_with_facebook'.tr(),
+                leading: const Icon(
+                  Icons.facebook,
+                  size: 20,
+                  color: Colors.white,
+                ),
+                background: AppColors.facebookBlue,
+                foreground: Colors.white,
+                onTap: onFacebook,
+              ),
+
+              const SizedBox(height: 12),
+
+              // Google
+              _AuthButton(
+                label: 'continue_with_google'.tr(),
                 leading: SvgPicture.asset(
                   'assets/icons/google.svg',
                   width: 20,
@@ -103,17 +132,12 @@ class WelcomeScreen extends StatelessWidget {
                 borderColor: AppColors.googleButtonBorder,
                 onTap: onGoogle,
               ),
+
               const SizedBox(height: 12),
+
+              // Email: يظهر فقط، وسيتم تفعيله بعد إنشاء Login Screen
               _AuthButton(
-                label: 'Continue with Facebook',
-                leading: const Icon(Icons.facebook, size: 20, color: Colors.white),
-                background: AppColors.facebookBlue,
-                foreground: Colors.white,
-                onTap: onFacebook,
-              ),
-              const SizedBox(height: 12),
-              _AuthButton(
-                label: 'Continue with email',
+                label: 'continue_with_email'.tr(),
                 leading: Icon(
                   Icons.mail_outline,
                   size: 20,
@@ -121,7 +145,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 background: colors.primary,
                 foreground: colors.onPrimary,
-                onTap: onEmail,
+                onTap: null,
               ),
             ],
           ),

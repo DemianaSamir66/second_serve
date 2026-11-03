@@ -26,6 +26,8 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.navBorder,
     required this.navSelected,
     required this.navUnselected,
+    required this.splashBlob,
+    required this.splashAccent,
   });
 
   final Color background;
@@ -51,13 +53,16 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color navSelected;
   final Color navUnselected;
 
+  // Splash colors
+  final Color splashBlob;
+  final Color splashAccent;
+
   // ألوان ثابتة في الـ Light والـ Dark
   static const Color facebookBlue = Color(0xFF1877F2);
   static const Color buttonSecondary = Color(0xFFEAE1DA);
   static const Color googleButtonText = Color(0xFF2D5A27);
   static const Color googleButtonBorder = Color(0xFFE1D8D2);
   static const Color settingsIcon = Color(0xFF154212);
-
 
   static const AppColors light = AppColors(
     background: Color(0xFFF8EFE8),
@@ -82,6 +87,8 @@ class AppColors extends ThemeExtension<AppColors> {
     navBorder: Color(0xFFEAE1DA),
     navSelected: Color(0xFF7EB377),
     navUnselected: Color(0xFF42493E),
+    splashBlob: Color(0xFFDFF3E8),
+    splashAccent: Color(0xFF2E8B57),
   );
 
   static const AppColors dark = AppColors(
@@ -107,9 +114,11 @@ class AppColors extends ThemeExtension<AppColors> {
     navBorder: Color(0xFF2E342E),
     navSelected: Color(0xFF7EB377),
     navUnselected: Color(0xFFB5BAB0),
+    splashBlob: Color(0xFF2F4A2B),
+    splashAccent: Color(0xFF9DD090),
   );
 
-  /// الاستخدام: AppColors.of(context).primary
+  // الاستخدام: AppColors.of(context).primary
   static AppColors of(BuildContext context) =>
       Theme.of(context).extension<AppColors>()!;
 
@@ -137,6 +146,8 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? navBorder,
     Color? navSelected,
     Color? navUnselected,
+    Color? splashBlob,
+    Color? splashAccent,
   }) {
     return AppColors(
       background: background ?? this.background,
@@ -161,12 +172,15 @@ class AppColors extends ThemeExtension<AppColors> {
       navBorder: navBorder ?? this.navBorder,
       navSelected: navSelected ?? this.navSelected,
       navUnselected: navUnselected ?? this.navUnselected,
+      splashBlob: splashBlob ?? this.splashBlob,
+      splashAccent: splashAccent ?? this.splashAccent,
     );
   }
 
   @override
   AppColors lerp(ThemeExtension<AppColors>? other, double t) {
     if (other is! AppColors) return this;
+
     return AppColors(
       background: Color.lerp(background, other.background, t)!,
       surfaceAlt: Color.lerp(surfaceAlt, other.surfaceAlt, t)!,
@@ -190,6 +204,8 @@ class AppColors extends ThemeExtension<AppColors> {
       navBorder: Color.lerp(navBorder, other.navBorder, t)!,
       navSelected: Color.lerp(navSelected, other.navSelected, t)!,
       navUnselected: Color.lerp(navUnselected, other.navUnselected, t)!,
+      splashBlob: Color.lerp(splashBlob, other.splashBlob, t)!,
+      splashAccent: Color.lerp(splashAccent, other.splashAccent, t)!,
     );
   }
 }

@@ -1,3 +1,5 @@
+
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:second_serve/core/constants/app_assets.dart';
@@ -7,11 +9,13 @@ import 'package:second_serve/core/theme/text_styles.dart';
 class Onboarding3 extends StatelessWidget {
   final VoidCallback? onSkip;
   final VoidCallback? onPrevious;
+  final VoidCallback? onNext;
 
   const Onboarding3({
     super.key,
     this.onSkip,
     this.onPrevious,
+    this.onNext,
   });
 
   @override
@@ -137,10 +141,10 @@ class Onboarding3 extends StatelessWidget {
           ),
           Expanded(
             child: IconButton(
-              onPressed: null,
+              onPressed: onNext,
               icon: Icon(
                 Icons.arrow_forward,
-                color: colors.onPrimary.withValues(alpha: 0.5),
+                color: colors.onPrimary,
               ),
             ),
           ),

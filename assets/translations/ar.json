@@ -1,9 +1,16 @@
+
 {
   "skip": "تخطي",
+  "splash_tagline_start": "أنقذ الطعام، ",
+  "splash_tagline_highlight": "واصنع فرقًا",
   "onboarding1_title": "شارك الطعام، واصنع تأثيرًا",
   "onboarding1_description": "تبرع بالطعام الفائض لمن يحتاج إليه، وساهم في إحداث فرق.",
   "onboarding2_title": "ابحث عن الطعام الفائض\nبالقرب منك",
   "onboarding2_description": "تحدث مع أذكى تقنيات الذكاء الاصطناعي، واستمتع بقوة الذكاء الاصطناعي معنا.",
   "onboarding3_title": "أنقذ الطعام\nقلل الهدر",
-  "onboarding3_description": "امنح الطعام الفائض فرصة ثانية\nوساعد في تقليل هدر الطعام"
+  "onboarding3_description": "امنح الطعام الفائض فرصة ثانية\nوساعد في تقليل هدر الطعام",
+  "welcome_title": "هيا نبدأ\nإنقاذ الطعام!",
+  "continue_with_facebook": "المتابعة باستخدام فيسبوك",
+  "continue_with_google": "المتابعة باستخدام جوجل",
+  "continue_with_email": "المتابعة باستخدام البريد الإلكتروني"
 }

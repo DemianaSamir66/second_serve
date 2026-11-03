@@ -1,20 +1,21 @@
+
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:second_serve/core/constants/app_assets.dart';
 import 'package:second_serve/core/theme/app_colors.dart';
+import 'package:second_serve/core/theme/text_styles.dart';
 
 class SplashScreen extends StatefulWidget {
-  /// بيتنده بعد ما الأنيميشن والانتظار يخلصوا.
   final VoidCallback onFinished;
   final Duration duration;
 
   const SplashScreen({
     super.key,
     required this.onFinished,
-    this.duration = const Duration(milliseconds: 3000),
+    this.duration = const Duration(seconds: 5),
   });
 
   @override
@@ -26,23 +27,39 @@ class _SplashScreenState extends State<SplashScreen>
   late final AnimationController _controller;
   late final Animation<double> _fade;
   late final Animation<double> _scale;
+
   Timer? _timer;
 
   @override
   void initState() {
     super.initState();
+
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
     );
-    _fade = CurvedAnimation(parent: _controller, curve: Curves.easeOut);
-    _scale = Tween<double>(begin: 0.9, end: 1).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOutBack),
+
+    _fade = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeOut,
     );
+
+    _scale = Tween<double>(
+      begin: 0.9,
+      end: 1,
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeOutBack,
+      ),
+    );
+
     _controller.forward();
 
     _timer = Timer(widget.duration, () {
-      if (mounted) widget.onFinished();
+      if (mounted) {
+        widget.onFinished();
+      }
     });
   }
 
@@ -58,28 +75,31 @@ class _SplashScreenState extends State<SplashScreen>
     final colors = AppColors.of(context);
     final size = MediaQuery.sizeOf(context);
 
-    final blobColor = Theme.of(context).brightness == Brightness.dark
-        ? colors.primaryLight
-        : const Color(0xFFC5CBB0);
+    final blobColor = colors.splashBlob;
+    final splashAccent = colors.splashAccent;
 
     return Scaffold(
       backgroundColor: colors.background,
       body: Stack(
         children: [
-          // بقعة فوق يمين
-          Positioned(
+          PositionedDirectional(
             top: -size.width * 0.25,
-            right: -size.width * 0.3,
-            child: _Blob(size: size.width * 0.9, color: blobColor),
-          ),
-          // بقعة تحت شمال
-          Positioned(
-            bottom: -size.width * 0.3,
-            left: -size.width * 0.3,
-            child: _Blob(size: size.width * 0.9, color: blobColor),
+            end: -size.width * 0.3,
+            child: _Blob(
+              size: size.width * 0.9,
+              color: blobColor,
+            ),
           ),
 
-          // اللوجو في النص
+          PositionedDirectional(
+            bottom: -size.width * 0.3,
+            start: -size.width * 0.3,
+            child: _Blob(
+              size: size.width * 0.9,
+              color: blobColor,
+            ),
+          ),
+
           Center(
             child: FadeTransition(
               opacity: _fade,
@@ -101,26 +121,29 @@ class _SplashScreenState extends State<SplashScreen>
             ),
           ),
 
-          // التاجلاين تحت
           Positioned(
             left: 24,
             right: 24,
-            bottom: MediaQuery.paddingOf(context).bottom + size.height * 0.1,
+            bottom: MediaQuery.paddingOf(context).bottom +
+                size.height * 0.1,
             child: FadeTransition(
               opacity: _fade,
               child: Text.rich(
                 textAlign: TextAlign.center,
                 TextSpan(
-                  style: GoogleFonts.poppins(
-                    fontSize: 14,
+                  style: AppTextStyles.body(context).copyWith(
                     fontWeight: FontWeight.w500,
                     color: colors.primaryDark,
                   ),
-                  children: const [
-                    TextSpan(text: 'Rescue Food, '),
+                  children: [
                     TextSpan(
-                      text: 'Make a Difference',
-                      style: TextStyle(color: Color(0xFFE8704A)),
+                      text: 'splash_tagline_start'.tr(),
+                    ),
+                    TextSpan(
+                      text: 'splash_tagline_highlight'.tr(),
+                      style: TextStyle(
+                        color: splashAccent,
+                      ),
                     ),
                   ],
                 ),
@@ -133,12 +156,14 @@ class _SplashScreenState extends State<SplashScreen>
   }
 }
 
-/// دايرة ضبابية ناعمة بتتلاشى للشفاف.
 class _Blob extends StatelessWidget {
   final double size;
   final Color color;
 
-  const _Blob({required this.size, required this.color});
+  const _Blob({
+    required this.size,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
