@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-/// أيقونات جاهزة من Flutter
+
 class AppIcons {
   AppIcons._();
 
-  // عام
+
   static const menu = Icons.menu;
   static const back = Icons.arrow_back;
   static const next = Icons.arrow_forward;
@@ -17,7 +17,7 @@ class AppIcons {
   static const visible = Icons.visibility_outlined;
   static const hidden = Icons.visibility_off_outlined;
 
-  // بحث وأكل
+
   static const search = Icons.search;
   static const filter = Icons.tune;
   static const aiSearch = Icons.auto_awesome;
@@ -29,7 +29,7 @@ class AppIcons {
   static const star = Icons.star;
   static const addPhoto = Icons.add_a_photo_outlined;
 
-  // الشريط السفلي والقوايم
+
   static const home = Icons.home_outlined;
   static const impact = Icons.volunteer_activism;
   static const notification = Icons.notifications_none;
@@ -39,7 +39,7 @@ class AppIcons {
   static const myOrders = Icons.receipt_long_outlined;
   static const impactTracker = Icons.bar_chart;
 
-  // الإعدادات والحساب
+
   static const settings = Icons.settings_outlined;
   static const security = Icons.shield_outlined;
   static const privacy = Icons.lock_outline;
@@ -53,7 +53,7 @@ class AppIcons {
   static const reservations = Icons.event_available;
   static const language = Icons.language;
 
-  // Impact والمطعم
+
   static const food = Icons.restaurant;
   static const co2 = Icons.co2;
   static const trees = Icons.forest;
@@ -68,7 +68,7 @@ class AppIcons {
   static const done = Icons.check_circle_outline;
 }
 
-/// أيقونات وصور SVG من ملفات
+
 class AppSvgs {
   AppSvgs._();
 
@@ -76,7 +76,7 @@ class AppSvgs {
   static const google = 'assets/icons/google.svg';
   static const facebook = 'assets/icons/facebook-login.svg';
 
-  // أيقونات المكونات
+
   static const salt = 'assets/icons/ingredients/salt.svg';
   static const chicken = 'assets/icons/ingredients/chicken.svg';
   static const onion = 'assets/icons/ingredients/onion.svg';

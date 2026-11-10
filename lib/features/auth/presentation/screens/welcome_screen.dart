@@ -119,7 +119,7 @@ class WelcomeScreen extends StatelessWidget {
 
               const SizedBox(height: 12),
 
-              // Google
+
               _AuthButton(
                 label: 'continue_with_google'.tr(),
                 leading: SvgPicture.asset(
@@ -135,7 +135,7 @@ class WelcomeScreen extends StatelessWidget {
 
               const SizedBox(height: 12),
 
-              // Email: يظهر فقط، وسيتم تفعيله بعد إنشاء Login Screen
+
               _AuthButton(
                 label: 'continue_with_email'.tr(),
                 leading: Icon(

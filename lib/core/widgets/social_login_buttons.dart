@@ -64,7 +64,7 @@ class _PillButton extends StatelessWidget {
   }
 }
 
-/// الأزرار العريضة التلاتة (Welcome)
+
 class SocialLoginButtons extends StatelessWidget {
   final String googleLabel;
   final String facebookLabel;
@@ -124,7 +124,7 @@ class SocialLoginButtons extends StatelessWidget {
   }
 }
 
-/// الأيقونات الصغيرة التلاتة (Google / Facebook / Apple) تحت Register
+
 class SocialIconsRow extends StatelessWidget {
   final VoidCallback? onGoogle;
   final VoidCallback? onFacebook;

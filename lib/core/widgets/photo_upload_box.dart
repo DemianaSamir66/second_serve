@@ -4,13 +4,13 @@ import 'package:second_serve/core/theme/text_styles.dart';
 import 'package:second_serve/core/widgets/dashed_border.dart';
 
 class PhotoUploadBox extends StatelessWidget {
-  final String? image; // رابط (http) أو مسار asset
+  final String? image;
   final String label;
-  final String? hint; // سطر صغير تحت العنوان
+  final String? hint;
   final IconData icon;
   final double iconSize;
   final Color? iconColor;
-  final IconData? badgeIcon; // أيقونة صغيرة في الركن (مثلاً كاميرا)
+  final IconData? badgeIcon;
   final Color? backgroundColor;
   final Color? borderColor;
   final double radius;

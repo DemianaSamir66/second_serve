@@ -6,10 +6,10 @@ import 'package:second_serve/core/theme/text_styles.dart';
 class MonthlyProgressCard extends StatelessWidget {
   final String title;
   final String? subtitle;
-  final String? tierLabel; // مثال: Emerald Tier
-  final List<String> labels; // JAN, FEB, ...
-  final List<double> values; // نفس عدد الـ labels
-  final int? selectedIndex; // الشهر المميز
+  final String? tierLabel;
+  final List<String> labels;
+  final List<double> values;
+  final int? selectedIndex;
   final double chartHeight;
 
   const MonthlyProgressCard({

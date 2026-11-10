@@ -8,7 +8,7 @@ class AppTextStyles {
   static bool _isArabic(BuildContext context) =>
       Localizations.localeOf(context).languageCode == 'ar';
 
-  // العناوين: Plus Jakarta Sans (إنجليزي) / Cairo (عربي)
+
   static TextStyle _heading(
       BuildContext context,
       double size,
@@ -24,7 +24,7 @@ class AppTextStyles {
     );
   }
 
-  // النصوص والأزرار: Poppins (إنجليزي) / Cairo (عربي)
+
   static TextStyle _body(
       BuildContext context,
       double size,
@@ -36,7 +36,7 @@ class AppTextStyles {
         : GoogleFonts.poppins(fontSize: size, fontWeight: weight, color: color);
   }
 
-  // العناوين
+
   static TextStyle headlineLarge(BuildContext c) =>
       _heading(c, 28, FontWeight.w700);
   static TextStyle headline(BuildContext c) =>
@@ -45,18 +45,18 @@ class AppTextStyles {
   static TextStyle subtitle(BuildContext c) =>
       _heading(c, 16, FontWeight.w600);
 
-  // النصوص
+
   static TextStyle body(BuildContext c) => _body(c, 14, FontWeight.w400);
   static TextStyle bodyMedium(BuildContext c) =>
       _body(c, 14, FontWeight.w500);
   static TextStyle bodySmall(BuildContext c) => _body(c, 12, FontWeight.w400);
   static TextStyle caption(BuildContext c) => _body(c, 10, FontWeight.w400);
 
-  // الأزرار والعناوين الصغيرة
+
   static TextStyle button(BuildContext c) => _body(c, 16, FontWeight.w600);
   static TextStyle label(BuildContext c) => _body(c, 12, FontWeight.w500);
 
-  // اسم القسم في الشريط السفلي: Work Sans (إنجليزي) / Cairo (عربي)
+
   static TextStyle navLabel(BuildContext context) {
     final color = AppColors.of(context).navUnselected;
     return _isArabic(context)

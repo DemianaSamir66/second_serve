@@ -20,13 +20,7 @@ class SuccessDialog extends StatelessWidget {
     this.icon = Icons.check_rounded,
   });
 
-  /// الاستخدام:
-  /// SuccessDialog.show(
-  ///   context,
-  ///   title: 'Donation Received Successfully!',
-  ///   message: 'Thank you for helping reduce food waste and supporting those in need.',
-  ///   onAction: () => context.go('/home'),
-  /// );
+
   static Future<void> show(
       BuildContext context, {
         required String title,

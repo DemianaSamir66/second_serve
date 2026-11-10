@@ -63,7 +63,7 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color uploadFill;
   final Color uploadBorder;
 
-  // ألوان ثابتة في الـ Light والـ Dark
+
   static const Color facebookBlue = Color(0xFF1877F2);
   static const Color buttonSecondary = Color(0xFFEAE1DA);
   static const Color googleButtonText = Color(0xFF2D5A27);
@@ -132,7 +132,7 @@ class AppColors extends ThemeExtension<AppColors> {
     uploadBorder: Color(0xFF4F7A52),
   );
 
-  // الاستخدام: AppColors.of(context).primary
+
   static AppColors of(BuildContext context) =>
       Theme.of(context).extension<AppColors>()!;
 

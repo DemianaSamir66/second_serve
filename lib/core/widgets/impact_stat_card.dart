@@ -5,9 +5,9 @@ import 'package:second_serve/core/theme/text_styles.dart';
 
 class ImpactStatCard extends StatelessWidget {
   final IconData icon;
-  final String label; // مثال: CO₂ PREVENTED
-  final String value; // مثال: 124.5
-  final String? unit; // مثال: kg
+  final String label;
+  final String value;
+  final String? unit;
 
   const ImpactStatCard({
     super.key,

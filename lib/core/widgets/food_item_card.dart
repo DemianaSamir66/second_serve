@@ -8,7 +8,7 @@ import 'package:second_serve/core/widgets/custom_button.dart';
 
 class FoodItemCard extends StatelessWidget {
   final String title;
-  final String image; // رابط (http) أو مسار asset
+  final String image;
   final double distanceKm;
   final int itemsLeft;
   final bool featured;

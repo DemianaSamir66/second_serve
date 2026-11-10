@@ -7,8 +7,8 @@ class AchievementBadgeCard extends StatelessWidget {
   final String title;
   final IconData icon;
   final bool isUnlocked;
-  final Color? color; // لون الدايرة (مثلاً accent للـ Streak)
-  final bool showCard; // true = كارت (Impact)، false = بدون كارت (Rescue Journey)
+  final Color? color;
+  final bool showCard;
   final double size;
   final VoidCallback? onTap;
 

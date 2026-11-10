@@ -6,11 +6,10 @@ import 'package:second_serve/core/theme/text_styles.dart';
 class SectionHeader extends StatelessWidget {
   final String title;
   final String? subtitle;
-  final String? actionText; // مثال: View All
+  final String? actionText;
   final VoidCallback? onActionTap;
 
-  /// true = عنوان صغير رمادي زي "Account" و "Charity Information"
-  /// false = عنوان أخضر كبير زي "Your Impact Dashboard"
+
   final bool compact;
 
   const SectionHeader({

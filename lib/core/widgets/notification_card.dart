@@ -7,8 +7,8 @@ class NotificationCard extends StatelessWidget {
   final IconData icon;
   final String title;
   final String body;
-  final String time; // فوق على اليمين: Now / 10min
-  final String? meta; // سطر صغير تحت: 12 hrs ago
+  final String time;
+  final String? meta;
   final bool isRead;
   final VoidCallback? onTap;
 

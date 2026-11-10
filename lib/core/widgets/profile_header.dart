@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:second_serve/core/theme/app_colors.dart';
 import 'package:second_serve/core/theme/text_styles.dart';
 
-/// شريط أخضر فوق (عنوان + رجوع) والصورة نازلة عليه، تحتها الاسم.
-/// - onEditProfile != null  → زرار "Edit Profile" (شاشة Profile)
-/// - onChangePhoto != null  → بادج كاميرا + نص "Tap to change..." (شاشة Edit Profile)
+
 class ProfileHeader extends StatelessWidget {
   final String title;
   final String name;
-  final String? image; // رابط (http) أو مسار asset
+  final String? image;
   final VoidCallback? onBack;
   final VoidCallback? onEditProfile;
   final VoidCallback? onChangePhoto;
