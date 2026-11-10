@@ -64,6 +64,7 @@ class _PillButton extends StatelessWidget {
   }
 }
 
+/// الأزرار العريضة التلاتة (Welcome)
 class SocialLoginButtons extends StatelessWidget {
   final String googleLabel;
   final String facebookLabel;
@@ -119,6 +120,63 @@ class SocialLoginButtons extends StatelessWidget {
           onPressed: onEmail,
         ),
       ],
+    );
+  }
+}
+
+/// الأيقونات الصغيرة التلاتة (Google / Facebook / Apple) تحت Register
+class SocialIconsRow extends StatelessWidget {
+  final VoidCallback? onGoogle;
+  final VoidCallback? onFacebook;
+  final VoidCallback? onApple;
+
+  const SocialIconsRow({
+    super.key,
+    this.onGoogle,
+    this.onFacebook,
+    this.onApple,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = AppColors.of(context);
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _IconTap(
+          onTap: onGoogle,
+          child: SvgPicture.asset(AppSvgs.google, width: 24, height: 24),
+        ),
+        _IconTap(
+          onTap: onFacebook,
+          child: SvgPicture.asset(AppSvgs.facebook, width: 24, height: 24),
+        ),
+        _IconTap(
+          onTap: onApple,
+          child: Icon(Icons.apple, size: 26, color: colors.textPrimary),
+        ),
+      ],
+    );
+  }
+}
+
+class _IconTap extends StatelessWidget {
+  final Widget child;
+  final VoidCallback? onTap;
+
+  const _IconTap({required this.child, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkResponse(
+      onTap: onTap,
+      radius: 28,
+      child: SizedBox(
+        width: 48,
+        height: 48,
+        child: Center(child: child),
+      ),
     );
   }
 }

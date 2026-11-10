@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:second_serve/core/theme/app_colors.dart';
 import 'package:second_serve/core/theme/text_styles.dart';
@@ -8,7 +6,14 @@ import 'package:second_serve/core/widgets/dashed_border.dart';
 class PhotoUploadBox extends StatelessWidget {
   final String? image; // رابط (http) أو مسار asset
   final String label;
+  final String? hint; // سطر صغير تحت العنوان
   final IconData icon;
+  final double iconSize;
+  final Color? iconColor;
+  final IconData? badgeIcon; // أيقونة صغيرة في الركن (مثلاً كاميرا)
+  final Color? backgroundColor;
+  final Color? borderColor;
+  final double radius;
   final VoidCallback? onTap;
   final double aspectRatio;
 
@@ -16,7 +21,14 @@ class PhotoUploadBox extends StatelessWidget {
     super.key,
     this.image,
     this.label = 'Tap to upload or take a photo',
+    this.hint,
     this.icon = Icons.add_a_photo_outlined,
+    this.iconSize = 28,
+    this.iconColor,
+    this.badgeIcon,
+    this.backgroundColor,
+    this.borderColor,
+    this.radius = 24,
     this.onTap,
     this.aspectRatio = 348 / 200,
   });
@@ -27,10 +39,10 @@ class PhotoUploadBox extends StatelessWidget {
     final hasImage = image != null && image!.isNotEmpty;
 
     final content = Material(
-      color: colors.surfaceAlt,
+      color: backgroundColor ?? colors.surfaceAlt,
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(radius),
         side: hasImage
             ? BorderSide(color: colors.navBorder)
             : BorderSide.none,
@@ -42,30 +54,73 @@ class PhotoUploadBox extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             _buildImage(colors),
-            Positioned(
-              right: 12,
+            PositionedDirectional(
+              end: 12,
               bottom: 12,
               child: CircleAvatar(
                 radius: 18,
                 backgroundColor: colors.surface,
-                child: Icon(Icons.edit_outlined,
-                    size: 18, color: colors.primary),
+                child: Icon(
+                  Icons.edit_outlined,
+                  size: 18,
+                  color: colors.primary,
+                ),
               ),
             ),
           ],
         )
-            : Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+            : Stack(
+          fit: StackFit.expand,
           children: [
-            Icon(icon, size: 28, color: colors.textPrimary),
-            const SizedBox(height: 12),
-            Text(
-              label,
-              textAlign: TextAlign.center,
-              style: AppTextStyles.bodySmall(context).copyWith(
-                color: colors.textMuted,
+            Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    icon,
+                    size: iconSize,
+                    color: iconColor ?? colors.textPrimary,
+                  ),
+                  SizedBox(height: hint == null ? 12 : 6),
+                  Text(
+                    label,
+                    textAlign: TextAlign.center,
+                    style: hint == null
+                        ? AppTextStyles.bodySmall(context).copyWith(
+                      color: colors.textMuted,
+                    )
+                        : AppTextStyles.bodySmall(context).copyWith(
+                      color: colors.textPrimary,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  if (hint != null) ...[
+                    const SizedBox(height: 2),
+                    Text(
+                      hint!,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.caption(context).copyWith(
+                        color: colors.textSecondary,
+                      ),
+                    ),
+                  ],
+                ],
               ),
             ),
+            if (badgeIcon != null)
+              PositionedDirectional(
+                end: 10,
+                bottom: 10,
+                child: CircleAvatar(
+                  radius: 12,
+                  backgroundColor: colors.surface,
+                  child: Icon(
+                    badgeIcon,
+                    size: 14,
+                    color: colors.textPrimary,
+                  ),
+                ),
+              ),
           ],
         ),
       ),
@@ -76,8 +131,8 @@ class PhotoUploadBox extends StatelessWidget {
       child: hasImage
           ? content
           : DashedBorder(
-        color: colors.textMuted.withValues(alpha: 0.6),
-        radius: 24,
+        color: borderColor ?? colors.textMuted.withValues(alpha: 0.6),
+        radius: radius,
         child: content,
       ),
     );

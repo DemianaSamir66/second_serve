@@ -28,6 +28,10 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.navUnselected,
     required this.splashBlob,
     required this.splashAccent,
+    required this.checkboxFill,
+    required this.checkboxBorder,
+    required this.uploadFill,
+    required this.uploadBorder,
   });
 
   final Color background;
@@ -52,10 +56,12 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color navBorder;
   final Color navSelected;
   final Color navUnselected;
-
-  // Splash colors
   final Color splashBlob;
   final Color splashAccent;
+  final Color checkboxFill;
+  final Color checkboxBorder;
+  final Color uploadFill;
+  final Color uploadBorder;
 
   // ألوان ثابتة في الـ Light والـ Dark
   static const Color facebookBlue = Color(0xFF1877F2);
@@ -89,6 +95,10 @@ class AppColors extends ThemeExtension<AppColors> {
     navUnselected: Color(0xFF42493E),
     splashBlob: Color(0xFFDFF3E8),
     splashAccent: Color(0xFF2E8B57),
+    checkboxFill: Color(0xFFEDEBE5),
+    checkboxBorder: Color(0xFFD1D5DB),
+    uploadFill: Color(0xFFCDECDF),
+    uploadBorder: Color(0xFFA5D6A7),
   );
 
   static const AppColors dark = AppColors(
@@ -116,6 +126,10 @@ class AppColors extends ThemeExtension<AppColors> {
     navUnselected: Color(0xFFB5BAB0),
     splashBlob: Color(0xFF2F4A2B),
     splashAccent: Color(0xFF9DD090),
+    checkboxFill: Color(0xFF262C26),
+    checkboxBorder: Color(0xFF4A524A),
+    uploadFill: Color(0xFF1F3322),
+    uploadBorder: Color(0xFF4F7A52),
   );
 
   // الاستخدام: AppColors.of(context).primary
@@ -148,6 +162,10 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? navUnselected,
     Color? splashBlob,
     Color? splashAccent,
+    Color? checkboxFill,
+    Color? checkboxBorder,
+    Color? uploadFill,
+    Color? uploadBorder,
   }) {
     return AppColors(
       background: background ?? this.background,
@@ -174,6 +192,10 @@ class AppColors extends ThemeExtension<AppColors> {
       navUnselected: navUnselected ?? this.navUnselected,
       splashBlob: splashBlob ?? this.splashBlob,
       splashAccent: splashAccent ?? this.splashAccent,
+      checkboxFill: checkboxFill ?? this.checkboxFill,
+      checkboxBorder: checkboxBorder ?? this.checkboxBorder,
+      uploadFill: uploadFill ?? this.uploadFill,
+      uploadBorder: uploadBorder ?? this.uploadBorder,
     );
   }
 
@@ -206,6 +228,10 @@ class AppColors extends ThemeExtension<AppColors> {
       navUnselected: Color.lerp(navUnselected, other.navUnselected, t)!,
       splashBlob: Color.lerp(splashBlob, other.splashBlob, t)!,
       splashAccent: Color.lerp(splashAccent, other.splashAccent, t)!,
+      checkboxFill: Color.lerp(checkboxFill, other.checkboxFill, t)!,
+      checkboxBorder: Color.lerp(checkboxBorder, other.checkboxBorder, t)!,
+      uploadFill: Color.lerp(uploadFill, other.uploadFill, t)!,
+      uploadBorder: Color.lerp(uploadBorder, other.uploadBorder, t)!,
     );
   }
 }
